@@ -19,10 +19,11 @@ class Fifo {
     if (!process) return
     if(process.arrivalTime <= time){
       time += process.burstTime
-      process = this.processes[index+1] || null
+      index++
+      process = this.processes[index] || null
     }else{
-      this.processes.splice(index, 0, new Process({arrivalTime: time, burstTime: process.arrivalTime}))
-      time += process.arrivalTime
+      this.processes.splice(index, 0, new Process({arrivalTime: time, burstTime: process.arrivalTime - time}))
+      time += (process.arrivalTime - 1)
       index++
     }
     this.checkEmptyProcess(index, time, process)
