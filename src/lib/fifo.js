@@ -15,18 +15,15 @@ class Fifo {
     return this
   }
   checkEmptyProcess(index = 0, time = 0, process = null) {
-    console.log(index,time,process)
     if (!process) return
     if(process.arrivalTime <= time){
       time += process.burstTime
-      index++
-      process = this.processes[index] || null
+      process = this.processes[this.processes.indexOf(process)+1] || null
     }else{
       this.processes.splice(index, 0, new Process({arrivalTime: time, burstTime: process.arrivalTime - time}))
-      time += (process.arrivalTime - 1)
-      index++
+      time += process.arrivalTime - time
     }
-    this.checkEmptyProcess(index, time, process)
+    this.checkEmptyProcess(index+1, time, process)
   }
   calculateTime() {
     let wt = 0
