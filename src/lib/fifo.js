@@ -15,6 +15,7 @@ class Fifo {
     return this
   }
   checkEmptyProcess(index = 0, time = 0, process = null) {
+    console.log(index,time,process)
     if (!process) return
     if(process.arrivalTime <= time){
       time += process.burstTime
