@@ -1,5 +1,6 @@
 const addProcess = document.getElementById('addProcess')
 const delProcess = document.getElementById('delProcess')
+const reset = document.getElementById('reset')
 const calculate = document.getElementById('calculate')
 const processes = document.getElementById('wrapper')
 
@@ -25,6 +26,9 @@ delProcess.addEventListener('click', () => {
 addProcess.addEventListener('click', () => {
   numOfProcess++
   processes.innerHTML += processForm(numOfProcess)
+})
+reset.addEventListener('click', () => {
+  window.location.reload()
 })
 
 const fetchTable = (data) => {
