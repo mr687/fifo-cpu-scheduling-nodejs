@@ -6,15 +6,6 @@ const processes = document.getElementById('wrapper')
 
 let ganttChartData = []
 
-const processForm = (i) => `
-<div class="card card-body my-3 process-item">
-  <div class="row">
-    <div class="col"><label>Process ID</label><input type="number" value="${i}" class="form-control pid" placeholder="Process ID" required></div>
-    <div class="col"><label>Arrival Time</label><input type="number" value="0" class="form-control arrivalTimes" placeholder="Arrival Time" required></div>
-    <div class="col"><label>Burst Time</label><input type="number" value="0" class="form-control burstTimes" placeholder="Burst Time" required></div>
-  </div>
-</div>
-`
 let numOfProcess = 1
 
 delProcess.addEventListener('click', () => {
@@ -25,7 +16,16 @@ delProcess.addEventListener('click', () => {
 })
 addProcess.addEventListener('click', () => {
   numOfProcess++
-  processes.innerHTML += processForm(numOfProcess)
+  const newForm = document.createElement('div')
+  newForm.classList.add('card', 'card-body','my-3', 'process-item')
+  newForm.innerHTML = `
+  <div class="row">
+    <div class="col"><label>Process ID</label><input type="number" value="${numOfProcess}" class="form-control pid" placeholder="Process ID" required></div>
+    <div class="col"><label>Arrival Time</label><input type="number" value="0" class="form-control arrivalTimes" placeholder="Arrival Time" required></div>
+    <div class="col"><label>Burst Time</label><input type="number" value="0" class="form-control burstTimes" placeholder="Burst Time" required></div>
+  </div>
+  `
+  processes.appendChild(newForm)
 })
 reset.addEventListener('click', () => {
   window.location.reload()
@@ -71,8 +71,6 @@ const setGanttChart = (data) => {
     }
     startTime += item.burstTime
   })
-
-  console.log(ganttChartData)
 
   google.charts.load("current", {packages: ["timeline"]})
   google.charts.setOnLoadCallback(drawGanttChart)
