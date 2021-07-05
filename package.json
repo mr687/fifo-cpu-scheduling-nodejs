@@ -1,0 +1,21 @@
+{
+  "name": "fifo",
+  "version": "1.0.0",
+  "description": "CPU Scheduling With FIFO Algorithm.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "fifo",
+    "cpu"
+  ],
+  "author": "mr687",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9"
+  }
+}
