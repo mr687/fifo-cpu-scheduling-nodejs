@@ -22,7 +22,7 @@ class Fifo {
       process = this.processes[index] || null
     }else{
       this.processes.splice(index, 0, new Process({arrivalTime: time, burstTime: process.arrivalTime}))
-      time += process.burstTime
+      time += process.arrivalTime
     }
     this.checkEmptyProcess(index, time, process)
   }
