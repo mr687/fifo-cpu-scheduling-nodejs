@@ -31,8 +31,10 @@ class Fifo {
     this.processes.forEach(
       (p, pi) => {
         p.calculate(this.processes[pi-1] || null)
-        wt += p.waitingTime
-        rt += p.responseTime
+        if (p.pid !== null) {
+           wt += p.waitingTime
+           rt += p.responseTime
+        }
       }
     )
     this.averageWaitingTime = Number((wt/this.numberOfProcess).toFixed(1))
