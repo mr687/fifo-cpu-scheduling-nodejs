@@ -97,8 +97,8 @@ calculate.addEventListener('click', async () => {
   })
   if (res.ok) {
     const response = await res.json()
-    fetchTable(response.data)
     setGanttChart(response.data)
+    fetchTable(response.data)
   }else{
     console.log('Request Error.')
   }
